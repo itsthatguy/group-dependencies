@@ -27,19 +27,19 @@ function resolveApp (relativePath) {
 const appPkgPath = resolveApp('package.json');
 var pkgJson = require(appPkgPath);
 
-const buildDependencies = pkgJson[group + 'Dependencies'];
+const groupDependencies = pkgJson[group + 'Dependencies'];
 const devDependencies = pkgJson.devDependencies;
 
-if (!buildDependencies) {
+if (!groupDependencies) {
   console.log(`No ${group}Dependencies found.`);
   process.exit(0);
 }
 
-const toInstall = buildDependencies.map(function (bDep) {
+const toInstall = groupDependencies.map(function (gDep) {
   let pkgString = Object.keys(devDependencies)
   .reduce(function (result, name) {
-    if (name !== bDep) return result;
-    const version = devDependencies[name];
+    if (name !== gDep) return result;
+    const versio1n = devDependencies[name];
     result.push(`${name}@"${version}"`);
     return result;
   }, []).join(' ');
@@ -49,8 +49,8 @@ const toInstall = buildDependencies.map(function (bDep) {
 
   let msg;
   if (!pkgString) {
-    msg = `${warn} ${bDep} not found: installing latest`;
-    pkgString = bDep;
+    msg = `${warn} ${gDep} not found: installing latest`;
+    pkgString = gDep;
   } else {
     msg = `${info} ${pkgString}`;
   }
