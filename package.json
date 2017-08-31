@@ -9,6 +9,11 @@
   "bin": {
     "deps": "./bin/deps.js"
   },
+  "repository": "itsthatguy/group-dependencies",
+  "bugs": {
+    "url" : "https://github.com/itsthatguy/group-dependencies/issues",
+    "email" : "kevin@itsthatguy.com"
+  },
   "author": "Kevin Altman <kevin@itsthatguy.com>",
   "license": "ISC",
   "dependencies": {
