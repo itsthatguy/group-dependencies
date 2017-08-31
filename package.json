@@ -1,0 +1,30 @@
+{
+  "name": "build-dependencies",
+  "version": "0.0.0",
+  "description": "Allows for specifying specific non-production packages to install, for use in an environment that only installs production variables ie; heroku.",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "bin": {
+    "bdep": "./bin/bdep.js"
+  },
+  "author": "Kevin Altman <kevin@itsthatguy.com>",
+  "license": "ISC",
+  "dependencies": {
+    "butts": "^1.1.0",
+    "colors": "^1.1.2",
+    "semver": "^5.4.1"
+  },
+  "devDependencies": {
+    "babel-cli": "^6.26.0",
+    "enzyme": "^2.9.1",
+    "jest": "^20.0.4",
+    "webpack": "^1.15.0"
+  },
+  "buildDependencies": [
+    "webpack",
+    "babel-cli",
+    "butts"
+  ]
+}
