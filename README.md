@@ -1,13 +1,25 @@
-# build-dependencies
+# group-dependencies
 
 ## Install
 
 ```
-npm install build-dependencies
+npm install group-dependencies
 ```
 
 ## Usage
 
+```js
+// package.json
+{
+  ...
+  buildDependencies: [
+    "webpack",
+    "babel-cli"
+  ]
+  ...
+}
 ```
-$(npm bin)/bdep install
+
+```
+$(npm bin)/deps install build
 ```
