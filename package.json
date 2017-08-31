@@ -1,5 +1,5 @@
 {
-  "name": "build-dependencies",
+  "name": "group-dependencies",
   "version": "0.0.1",
   "description": "Allows for specifying specific non-production packages to install, for use in an environment that only installs production variables ie; heroku.",
   "main": "index.js",
@@ -7,7 +7,7 @@
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "bin": {
-    "bdep": "./bin/bdep.js"
+    "deps": "./bin/deps.js"
   },
   "author": "Kevin Altman <kevin@itsthatguy.com>",
   "license": "ISC",

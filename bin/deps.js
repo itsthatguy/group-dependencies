@@ -6,9 +6,15 @@ var fs = require('fs');
 var path = require('path');
 
 var script = process.argv[2];
+var group = process.argv[3];
 
 if (script !== 'install') {
-  console.log("There's only one command: `bdep install`");
+  console.log("There's only one command: `deps install [GROUP_NAME]`");
+  process.exit(1);
+}
+
+if (!group || !group.length) {
+  console.log("Please specify a group: `deps install [GROUP_NAME]`");
   process.exit(1);
 }
 
@@ -21,11 +27,11 @@ function resolveApp (relativePath) {
 const appPkgPath = resolveApp('package.json');
 var pkgJson = require(appPkgPath);
 
-const buildDependencies = pkgJson.buildDependencies;
+const buildDependencies = pkgJson[group + 'Dependencies'];
 const devDependencies = pkgJson.devDependencies;
 
 if (!buildDependencies) {
-  console.log('No build dependencies specified.');
+  console.log(`No ${group}Dependencies found.`);
   process.exit(0);
 }
 
@@ -48,13 +54,13 @@ const toInstall = buildDependencies.map(function (bDep) {
   } else {
     msg = `${info} ${pkgString}`;
   }
-  console.log(`bdep ${msg}`);
+  console.log(`deps ${msg}`);
   return pkgString;
 
 });
 
 const packagesString = toInstall.join(' ');
 const command = `npm install ${packagesString}`;
-console.log(`bdep ${'cmd'.green} npm install ${packagesString}`);
+console.log(`deps ${'cmd'.green} npm install ${packagesString}`);
 
 execSync(command, { stdio:[0, 1, 2] });
