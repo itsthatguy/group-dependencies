@@ -39,7 +39,7 @@ const toInstall = groupDependencies.map(function (gDep) {
   let pkgString = Object.keys(devDependencies)
   .reduce(function (result, name) {
     if (name !== gDep) return result;
-    const versio1n = devDependencies[name];
+    const version = devDependencies[name];
     result.push(`${name}@"${version}"`);
     return result;
   }, []).join(' ');
