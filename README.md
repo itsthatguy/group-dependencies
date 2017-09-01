@@ -11,7 +11,10 @@ Let’s say you run webpack on heroku to build your app. There are 2 options:
 1. Set `heroku config:set NPM_CONFIG_PRODUCTION=false` to install all dependencies (including testing dependencies)
 2. Put your build dependencies in `dependencies` (i.e. production environment)
 
-With group-dependencies, you can declare your build dependencies in a separate property, `buildDependencies`, and install only those packages as needed, with `deps install build` as a part of your startup script (e.g Procfile, npm start).
+With group-dependencies, you can declare your build dependencies in a separate
+property, `buildDependencies`, and install only those packages as needed, by
+adding to `"scripts": { "heroku-postbuild": $(npm bin)/deps install build" }`
+to your `package.json`.
 
 ## Installation
 
