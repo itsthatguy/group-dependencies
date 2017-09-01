@@ -4,7 +4,7 @@
   "description": "Allows for specifying specific non-production packages to install, for use in an environment that only installs production variables ie; heroku.",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "$(npm bin)/jest"
   },
   "bin": {
     "deps": "./bin/deps.js"
@@ -17,7 +17,23 @@
   "author": "Kevin Altman <kevin@itsthatguy.com>",
   "license": "ISC",
   "dependencies": {
+    "babel-cli": "^6.26.0",
     "colors": "^1.1.2"
   },
-  "devDependencies": {}
+  "devDependencies": {
+    "intercept-stdout": "^0.1.2",
+    "jest": "^20.0.4",
+    "strip-color": "^0.1.0"
+  },
+  "testDependencies": [
+    "jest",
+    "babel-cli"
+  ],
+  "jest": {
+    "collectCoverage": true,
+    "collectCoverageFrom": [
+      "lib/**/*.js",
+      "!lib/runCommand.js"
+    ]
+  }
 }
