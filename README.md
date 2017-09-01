@@ -1,55 +1,71 @@
 # group-dependencies
 [![CircleCI](https://circleci.com/gh/itsthatguy/group-dependencies/tree/master.svg?style=svg)](https://circleci.com/gh/itsthatguy/group-dependencies/tree/master) [![npm version](https://badge.fury.io/js/group-dependencies.svg)](https://badge.fury.io/js/group-dependencies)
 
-## Install
+## What
+
+**npm** gives you two groups to specify dependencies (i.e. dev and prod).
+In the real world, we have multiple dependency environments (e.g. test, build,
+production, development).
+
+Let’s say you run webpack on heroku to build your app. There are 2 options:
+1. Set `heroku config:set NPM_CONFIG_PRODUCTION=false` to install all dependencies (including testing dependencies)
+2. Put your build dependencies in `dependencies` (i.e. production environment)
+
+With group-dependencies, you can declare your build dependencies in a separate property, `buildDependencies`, and install only those packages as needed, with `deps install build` as a part of your startup script (e.g Procfile, npm start).
+
+## Installation
 
 ```
 npm install group-dependencies
 ```
 
-### Usage
+## Usage
 
+First, add a new dependencies group to `package.json`:
 ```js
-// package.json
 {
   ...
-  "dependencies": {
-    "babel-cli": "^6.26.0",
-    "colors": "^1.1.2"
-  },
   "devDependencies": {
     "intercept-stdout": "^0.1.2",
     "jest": "^20.0.4",
     "strip-color": "^0.1.0"
   },
+  // our new group representing testing dependencies
   "testDependencies": [
-    "jest",
-    "babel-cli"
+    "jest"
   ]
   ...
 }
 ```
 
+Now you can install _only_ the dependencies for this new group:
+
+```shell
+# This will install jest@^20.0.4:
+$(npm bin)/deps install test
+```
+
+### Command
+```shell
+# Install dependencies in the named group
+$(npm bin)/deps install [GROUP_NAME]
+```
+
 ### How it works
+
+Any item added to the `[GROUP_NAME]Dependencies` property will be installed with
+`deps install [GROUP_NAME]`. If a matching package is found in `devDependencies`,
+that version will be installed.
 
 ```js
 // Here's the part that matters.
-"testDependencies": [
-  "jest",
-  "babel-cli"
+"buildDependencies": [
+  "webpack",
+  "babel-preset-env"
 ]
 ```
-
-When you add an item to the `[GROUP_NAME]Dependencies` property
-group-dependencies will scan your `devDependencies` for matching packages.
-It will use the version specified there to do the install of the package.
 
 The decision to use this strategy, with an array, was made so that we can
 leverage a few things.
 1. In your development enviroment, let `npm` manage installing your dev dependencies.
 2. You only need to manage package versions in one location, reducing the overhead.
-
-### Install command
-```
-$(npm bin)/deps install [GROUP_NAME]
-```
