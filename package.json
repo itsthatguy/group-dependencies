@@ -22,7 +22,7 @@
   },
   "devDependencies": {
     "intercept-stdout": "^0.1.2",
-    "jest": "^20.0.4",
+    "jest": "^26.4.2",
     "strip-color": "^0.1.0"
   },
   "testDependencies": [
