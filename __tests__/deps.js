@@ -33,8 +33,8 @@ describe('deps', function () {
   it('installs group dependencies', function () {
     deps('install', 'test');
     expect(out).toEqual('deps info resolve jest@"^26.4.2"\n' +
-                        'deps warn resolve babel-cli not found: installing latest\n' +
-                        'deps cmd npm install jest@"^26.4.2" babel-cli\n' +
-                        'npm install jest@"^26.4.2" babel-cli\n');
+                        'deps warn resolve @babel/cli not found: installing latest\n' +
+                        'deps cmd npm install jest@"^26.4.2" @babel/cli\n' +
+                        'npm install jest@"^26.4.2" @babel/cli\n');
   });
 });
