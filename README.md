@@ -64,7 +64,7 @@ that version will be installed.
 // Here's the part that matters.
 "buildDependencies": [
   "webpack",
-  "babel-preset-env"
+  "@babel/preset-env"
 ]
 ```
 
