@@ -18,7 +18,7 @@
   "license": "ISC",
   "dependencies": {
     "babel-cli": "^6.26.0",
-    "colors": "^1.1.2"
+    "colors": "^1.4.0"
   },
   "devDependencies": {
     "intercept-stdout": "^0.1.2",
