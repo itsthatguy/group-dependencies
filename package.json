@@ -4,7 +4,7 @@
   "description": "Allows for specifying specific non-production packages to install, for use in an environment that only installs production variables ie; heroku.",
   "main": "index.js",
   "scripts": {
-    "test": "$(npm bin)/jest"
+    "test": "jest"
   },
   "bin": {
     "deps": "./bin/deps.js"
