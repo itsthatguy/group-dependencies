@@ -57,7 +57,7 @@ deps install [GROUP_NAME]
 ### How it works
 
 Any item added to the `[GROUP_NAME]Dependencies` property will be installed with
-`deps install [GROUP_NAME]`. If a matching package is found in `devDependencies`,
+`deps install [GROUP_NAME]`. If a matching package is found in `devDependencies` or `dependencies`,
 that version will be installed.
 
 ```js
@@ -70,5 +70,5 @@ that version will be installed.
 
 The decision to use this strategy, with an array, was made so that we can
 leverage a few things.
-1. In your development enviroment, let `npm` manage installing your dev dependencies.
+1. In your development environment, let `npm` manage installing your dev dependencies.
 2. You only need to manage package versions in one location, reducing the overhead.
