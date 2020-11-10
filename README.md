@@ -13,7 +13,7 @@ Let’s say you run webpack on heroku to build your app. There are 2 options:
 
 With group-dependencies, you can declare your build dependencies in a separate
 property, `buildDependencies`, and install only those packages as needed, by
-adding to `"scripts": { "heroku-postbuild": $(npm bin)/deps install build" }`
+adding to `"scripts": { "heroku-postbuild": deps install build" }`
 to your `package.json`.
 
 ## Installation
@@ -45,13 +45,13 @@ Now you can install _only_ the dependencies for this new group:
 
 ```shell
 # This will install jest@^20.0.4:
-$(npm bin)/deps install test
+deps install test
 ```
 
 ### Command
 ```shell
 # Install dependencies in the named group
-$(npm bin)/deps install [GROUP_NAME]
+deps install [GROUP_NAME]
 ```
 
 ### How it works
@@ -64,7 +64,7 @@ that version will be installed.
 // Here's the part that matters.
 "buildDependencies": [
   "webpack",
-  "babel-preset-env"
+  "@babel/preset-env"
 ]
 ```
 
