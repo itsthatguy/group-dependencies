@@ -28,6 +28,10 @@
     "jest",
     "@babel/cli"
   ],
+  "mixedDependencies": [
+    "jest",
+    "colors"
+  ],
   "jest": {
     "collectCoverage": true,
     "collectCoverageFrom": [
