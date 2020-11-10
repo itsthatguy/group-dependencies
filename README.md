@@ -1,5 +1,5 @@
 # group-dependencies
-[![CircleCI](https://circleci.com/gh/itsthatguy/group-dependencies/tree/master.svg?style=svg)](https://circleci.com/gh/itsthatguy/group-dependencies/tree/master) [![npm version](https://badge.fury.io/js/group-dependencies.svg)](https://badge.fury.io/js/group-dependencies)
+![Node.js CI](https://github.com/itsthatguy/group-dependencies/workflows/Node.js%20CI/badge.svg) [![npm version](https://badge.fury.io/js/group-dependencies.svg)](https://badge.fury.io/js/group-dependencies)
 
 ## What
 
