@@ -13,7 +13,7 @@ Let’s say you run webpack on heroku to build your app. There are 2 options:
 
 With group-dependencies, you can declare your build dependencies in a separate
 property, `buildDependencies`, and install only those packages as needed, by
-adding to `"scripts": { "heroku-postbuild": deps install build" }`
+adding to `"scripts": { "heroku-postbuild": "deps install build" }`
 to your `package.json`.
 
 ## Installation
