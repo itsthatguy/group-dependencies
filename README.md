@@ -19,8 +19,9 @@ to your `package.json`.
 ## Installation
 
 ```
-npm install group-dependencies
+npm install [npm|yarn]? group-dependencies
 ```
+`?` - optional parameter
 
 ## Usage
 
@@ -45,13 +46,13 @@ Now you can install _only_ the dependencies for this new group:
 
 ```shell
 # This will install jest@^20.0.4:
-deps install test
+deps install npm test
 ```
 
 ### Command
 ```shell
 # Install dependencies in the named group
-deps install [GROUP_NAME]
+deps install npm [GROUP_NAME]
 ```
 
 ### How it works
