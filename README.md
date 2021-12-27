@@ -19,9 +19,16 @@ to your `package.json`.
 ## Installation
 
 ```
-npm install [npm|yarn]? group-dependencies
+npm install group-dependencies
 ```
-`?` - optional parameter
+
+OR in CI/CD only 
+
+npm:
+```npm install group-dependencies@git+https://github.com/defiyield-info/group-dependencies#0.1.0-beta.3```
+
+yarn:
+```yarn add group-dependencies@git+https://github.com/defiyield-info/group-dependencies#0.1.0-beta.3```
 
 ## Usage
 
