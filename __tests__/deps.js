@@ -17,7 +17,7 @@ describe('deps', function () {
 
   it('requires arguments', function () {
     deps();
-    expect(out).toContain("There's only one command: `deps install [GROUP_NAME]`");
+    expect(out).toContain("There are only two commands: \n`deps install [GROUP_NAME]` \ndeps v");
   });
 
   it('requires a group name', function () {
