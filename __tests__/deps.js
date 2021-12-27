@@ -25,13 +25,19 @@ describe('deps', function () {
     expect(out).toContain("Please specify a group: `deps install [GROUP_NAME]`")
   });
 
+
+  it('get version', function () {
+    deps('v');
+    expect(out).toContain("group-dependencies: ")
+  });
+
   it('only installs groups that exist', function () {
     deps('install', 'build');
     expect(out).toContain("No buildDependencies found.");
   });
 
-  it('installs group dependencies', function () {
-    deps('install', 'test');
+  it('installs group `npm` dependencies', function () {
+    deps('install', 'npm', 'test');
     const npmCmd = process.platform === 'win32' ? 'npm.cmd' : 'npm'
     expect(out).toEqual('deps info resolve jest@^26.4.2\n' +
                         'deps warn resolve @babel/cli not found: installing latest\n' +
