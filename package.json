@@ -1,6 +1,6 @@
 {
   "name": "group-dependencies",
-  "version": "0.1.0-beta.3",
+  "version": "0.1.0-beta.6",
   "description": "Allows for specifying specific non-production packages to install, for use in an environment that only installs production variables ie; heroku.",
   "main": "index.js",
   "scripts": {
