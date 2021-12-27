@@ -21,7 +21,7 @@ describe('deps', function () {
   });
 
   it('requires a group name', function () {
-    deps('install');
+    deps('install', 'npm');
     expect(out).toContain("Please specify a group: `deps install [GROUP_NAME]`")
   });
 
@@ -31,8 +31,13 @@ describe('deps', function () {
     expect(out).toContain("group-dependencies: ")
   });
 
+  it('requires supported only package manager', function () {
+    deps('install', 'pnpm', 'test');
+    expect(out).toContain("There are only next available package managers: ");
+  });
+
   it('only installs groups that exist', function () {
-    deps('install', 'build');
+    deps('install', 'npm', 'build');
     expect(out).toContain("No buildDependencies found.");
   });
 
