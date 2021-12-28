@@ -17,36 +17,45 @@ describe('deps', function () {
 
   it('requires arguments', function () {
     deps();
-    expect(out).toContain("There are only two commands: \n`deps install [GROUP_NAME]` \ndeps v");
+    expect(out).toContain('There are only two commands: \n`deps install [GROUP_NAME]` \ndeps v');
   });
 
   it('requires a group name', function () {
     deps('install', 'npm');
-    expect(out).toContain("Please specify a group: `deps install [GROUP_NAME]`")
+    expect(out).toContain('Please specify a group: `deps install [GROUP_NAME]`');
   });
 
 
   it('get version', function () {
     deps('v');
-    expect(out).toContain("group-dependencies: ")
+    expect(out).toContain('group-dependencies: ');
   });
 
   it('requires supported only package manager', function () {
     deps('install', 'pnpm', 'test');
-    expect(out).toContain("There are only next available package managers: ");
+    expect(out).toContain('There are only next available package managers: ');
   });
 
   it('only installs groups that exist', function () {
     deps('install', 'npm', 'build');
-    expect(out).toContain("No buildDependencies found.");
+    expect(out).toContain('No buildDependencies found.');
   });
 
-  it('installs group `npm` dependencies', function () {
+  it('installs by `npm` group dependencies', function () {
     deps('install', 'npm', 'test');
-    const npmCmd = process.platform === 'win32' ? 'npm.cmd' : 'npm'
+    const cmd = process.platform === 'win32' ? 'npm.cmd' : 'npm';
     expect(out).toEqual('deps info resolve jest@^26.4.2\n' +
-                        'deps warn resolve @babel/cli not found: installing latest\n' +
-                        'deps cmd npm install jest@^26.4.2 @babel/cli\n' +
-                        `${npmCmd} install jest@^26.4.2 @babel/cli\n`);
+      'deps warn resolve @babel/cli not found: installing latest\n' +
+      'deps cmd npm install jest@^26.4.2 @babel/cli\n' +
+      `${cmd} install jest@^26.4.2 @babel/cli\n`);
+  });
+
+  it('installs by `yarn` group dependencies', function () {
+    deps('install', 'yarn', 'test');
+    const cmd = process.platform === 'win32' ? 'yarn.cmd' : 'yarn';
+    expect(out).toEqual('deps info resolve jest@^26.4.2\n' +
+      'deps warn resolve @babel/cli not found: installing latest\n' +
+      'deps cmd yarn install jest@^26.4.2 @babel/cli\n' +
+      `${cmd} install jest@^26.4.2 @babel/cli\n`);
   });
 });
