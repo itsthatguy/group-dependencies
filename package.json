@@ -17,16 +17,22 @@
   "author": "Kevin Altman <kevin@itsthatguy.com>",
   "license": "ISC",
   "dependencies": {
+    "apollo-enchanted-cache-inmemory": "1.2.0",
     "colors": "^1.4.0"
   },
   "devDependencies": {
+    "colors": "^1.4.0",
     "intercept-stdout": "^0.1.2",
     "jest": "^26.4.2",
-    "strip-color": "^0.1.0"
+    "strip-color": "^0.1.0",
+    "apollo-enchanted-cache-inmemory": "1.2.0"
   },
   "testDependencies": [
     "jest",
     "@babel/cli"
+  ],
+  "monotestDependencies": [
+    "apollo-enchanted-cache-inmemory"
   ],
   "jest": {
     "collectCoverage": true,
